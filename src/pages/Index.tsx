@@ -1,5 +1,33 @@
 import { useState, useEffect, useRef } from "react";
 
+function ReelNatLogo({ size = 32 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Background */}
+      <rect width="32" height="32" rx="8" fill="#0a0a0a"/>
+      {/* Film strip holes */}
+      <rect x="3" y="4" width="3" height="3" rx="0.5" fill="#22c55e" opacity="0.7"/>
+      <rect x="3" y="10" width="3" height="3" rx="0.5" fill="#22c55e" opacity="0.7"/>
+      <rect x="3" y="16" width="3" height="3" rx="0.5" fill="#22c55e" opacity="0.7"/>
+      <rect x="3" y="22" width="3" height="3" rx="0.5" fill="#22c55e" opacity="0.7"/>
+      <rect x="26" y="4" width="3" height="3" rx="0.5" fill="#22c55e" opacity="0.7"/>
+      <rect x="26" y="10" width="3" height="3" rx="0.5" fill="#22c55e" opacity="0.7"/>
+      <rect x="26" y="16" width="3" height="3" rx="0.5" fill="#22c55e" opacity="0.7"/>
+      <rect x="26" y="22" width="3" height="3" rx="0.5" fill="#22c55e" opacity="0.7"/>
+      {/* Play triangle */}
+      <path d="M13 11L22 16L13 21V11Z" fill="#22c55e"/>
+      {/* Glow */}
+      <path d="M13 11L22 16L13 21V11Z" fill="url(#glow)" opacity="0.4"/>
+      <defs>
+        <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#4ade80"/>
+          <stop offset="100%" stopColor="#22c55e" stopOpacity="0"/>
+        </radialGradient>
+      </defs>
+    </svg>
+  );
+}
+
 const HERO_IMG = "https://cdn.poehali.dev/projects/f6b270c4-6398-4112-933d-3f405f34b9c3/files/2d18828e-6569-4f76-8e8b-28b16467fc41.jpg";
 const PHONE_IMG = "https://cdn.poehali.dev/projects/f6b270c4-6398-4112-933d-3f405f34b9c3/files/627c8e84-4692-4025-8a8e-319d80f33cb5.jpg";
 const STEPS_IMG = "https://cdn.poehali.dev/projects/f6b270c4-6398-4112-933d-3f405f34b9c3/files/31be389b-05a7-46af-8800-34998886d965.jpg";
@@ -153,14 +181,9 @@ export default function Index() {
       {/* NAV */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#080808]/80 backdrop-blur-md border-b border-white/5">
         <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
-          <div className="flex items-center gap-2">
-            <div className="relative w-8 h-8">
-              <div className="absolute inset-0 bg-green-500 rounded-lg rotate-12 opacity-60" />
-              <div className="absolute inset-0 bg-green-400 rounded-lg flex items-center justify-center">
-                <span className="text-black font-black text-sm">R</span>
-              </div>
-            </div>
-            <span className="font-black text-white tracking-tight">Reel<span className="text-green-400">Nat</span></span>
+          <div className="flex items-center gap-2.5">
+            <ReelNatLogo size={32} />
+            <span className="font-black text-white tracking-tight text-lg">Reel<span className="text-green-400">Nat</span></span>
           </div>
 
           <div className="hidden md:flex items-center gap-6 text-sm text-gray-400">
@@ -513,13 +536,8 @@ export default function Index() {
       {/* FOOTER */}
       <footer className="border-t border-white/5 px-6 py-8">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <div className="relative w-6 h-6">
-              <div className="absolute inset-0 bg-green-500 rounded-md rotate-12 opacity-60" />
-              <div className="absolute inset-0 bg-green-400 rounded-md flex items-center justify-center">
-                <span className="text-black font-black text-xs">R</span>
-              </div>
-            </div>
+          <div className="flex items-center gap-2.5">
+            <ReelNatLogo size={24} />
             <span className="font-black text-white text-sm tracking-tight">Reel<span className="text-green-400">Nat</span></span>
           </div>
           <p className="text-gray-600 text-xs">© 2025 ReelNat. All rights reserved.</p>
