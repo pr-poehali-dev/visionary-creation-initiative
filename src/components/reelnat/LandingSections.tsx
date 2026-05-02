@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { HERO_IMG, PHONE_IMG, STEPS_IMG, STATS, BENEFITS, STEPS, PLANS, FAQS } from "./ReelNatLogo";
+import { HERO_IMG, PHONE_IMG, STEPS_IMG, STATS, BENEFITS, STEPS } from "./ReelNatLogo";
 
 function StatCard({ value, label }: { value: string; label: string }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -200,60 +200,52 @@ export default function LandingSections({ scrollTo }: SectionsProps) {
         </div>
       </section>
 
-      {/* PRICING */}
-      <section id="pricing" className="py-20 bg-[#0a0a0a]">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <span className="text-green-400 text-sm font-semibold uppercase tracking-wider">Pricing</span>
-            <h2 className="text-3xl md:text-4xl font-black mt-3">Simple, transparent plans</h2>
-            <p className="text-gray-500 mt-3">No hidden fees. Cancel anytime.</p>
+      {/* FAQ */}
+      <section id="faq" className="py-20 bg-[#0a0a0a]">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <span className="text-green-400 text-sm font-semibold uppercase tracking-wider">FAQ</span>
+            <h2 className="text-3xl md:text-4xl font-black mt-3">Common questions</h2>
+            <p className="text-gray-500 mt-3 max-w-xl mx-auto">Everything you need to know before getting started</p>
           </div>
-          <div className="grid md:grid-cols-3 gap-6 items-start">
-            {PLANS.map((plan) => (
-              <div
-                key={plan.name}
-                className={`relative bg-[#0f0f0f] border-2 ${plan.color} rounded-2xl p-6 flex flex-col ${plan.highlight ? "md:scale-105 shadow-2xl shadow-green-500/10" : ""}`}
-              >
-                {plan.highlight && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-green-500 text-black text-xs font-bold px-4 py-1 rounded-full whitespace-nowrap">
-                    Most Popular
-                  </div>
-                )}
-                <div className="mb-6">
-                  <h3 className="text-white font-bold text-lg">{plan.name}</h3>
-                  <div className="flex items-end gap-1 mt-2">
-                    <span className="text-4xl font-black text-white">{plan.price}</span>
-                    <span className="text-gray-500 text-sm mb-1">{plan.period}</span>
-                  </div>
-                </div>
-                <ul className="flex flex-col gap-3 flex-1">
-                  {plan.features.map((f) => (
-                    <li key={f} className="flex items-center gap-3 text-gray-300 text-sm">
-                      <span className="text-green-400 flex-shrink-0">✓</span>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-                <button
-                  onClick={() => scrollTo("contact")}
-                  className={`mt-6 w-full py-3 rounded-xl font-bold text-sm transition-all ${plan.highlight ? "bg-green-500 hover:bg-green-400 text-black hover:scale-105" : "bg-white/5 hover:bg-white/10 text-white border border-white/10"}`}
-                >
-                  {plan.cta}
-                </button>
-              </div>
+          <div className="grid md:grid-cols-2 gap-4">
+            {[
+              {
+                q: "What kind of brands do you work with?",
+                a: "We work with brands of all sizes — from early-stage startups to established companies. If you have a logo and a target audience, we'll find the right creators to place it.",
+              },
+              {
+                q: "How soon can my logo go live?",
+                a: "After submitting your assets, your brand typically starts appearing in content within 48–72 hours. We move fast so you don't miss momentum.",
+              },
+              {
+                q: "Are placements disclosed as advertisements?",
+                a: "Our placements are native and blend naturally into the content. We stay fully compliant with platform guidelines and disclosure requirements.",
+              },
+              {
+                q: "Can I approve creators before they go live?",
+                a: "Yes. You can browse and approve specific creators before your brand goes live — giving you full control over brand safety and audience fit.",
+              },
+              {
+                q: "What platforms do you support?",
+                a: "We currently support Instagram Reels, YouTube Shorts, and TikTok. New platforms are added regularly based on client demand.",
+              },
+              {
+                q: "How do I track performance?",
+                a: "You get access to a live analytics dashboard showing views, reach, completion rates, and brand recall metrics — updated in real time.",
+              },
+              {
+                q: "Do I need to produce the video content myself?",
+                a: "No. Our vetted creators handle all production. You provide your logo and brand guidelines — we take care of the rest.",
+              },
+              {
+                q: "Is there a minimum commitment?",
+                a: "No long-term contracts required. You can start, pause, or cancel at any time. We believe results should keep you here, not fine print.",
+              },
+            ].map((item) => (
+              <FaqItem key={item.q} q={item.q} a={item.a} />
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section id="faq" className="py-20 max-w-3xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <span className="text-green-400 text-sm font-semibold uppercase tracking-wider">FAQ</span>
-          <h2 className="text-3xl md:text-4xl font-black mt-3">Common questions</h2>
-        </div>
-        <div className="flex flex-col gap-3">
-          {FAQS.map((faq) => <FaqItem key={faq.q} {...faq} />)}
         </div>
       </section>
 
